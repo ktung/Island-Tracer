@@ -1,0 +1,8 @@
+[
+    {
+        "name": "week19",
+        "map": "map19.svg",
+        "startingTileX": 100,
+        "startingTileY": 9
+    }
+]

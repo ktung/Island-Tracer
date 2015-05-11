@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Island Tracer</title>
+    <link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="main.css">
+</head>
+<body>
+    <header class="page-header"><h1>Island Tracer</h1></header>
+
+    <div role="tabpanel">
+        <ul class="nav nav-tabs" role="tablist" id="menu">
+            <li role="presentation" class="active"><a href="#dashboard" aria-controls="dashboard" role="tab" data-toggle="tab">Dashboard</a></li>
+            <li role="presentation"><a href="#colors" aria-controls="colors" role="tab" data-toggle="tab">Couleurs</a></li>
+        </ul>
+
+        <div class="tab-content">
+            <div role="tabpanel" class="tab-pane active" id="dashboard">
+                <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                    <textarea id="json"></textarea>
+                    <button id="start">Start</button>
+                    <div>
+                        <select id="weekSelector" name="weekSelector">
+                        </select>
+                        <input id="startingTileX" name="startingTileX" type="number" placeholder="StartingTileX" />
+                        <input id="startingTileY" name="startingTileY" type="number" placeholder="StartingTileY" />
+                    </div>
+                    <div>
+                        Vitesse : 
+                        <select name="speed" id="speed">
+                            <option value="1000">Lente</option>
+                            <option value="500" selected="selected">Moyenne</option>
+                            <option value="100">Rapide</option>
+                        </select>
+                        Manuel : <input id="manual" name="manual" type="checkbox" />
+                    </div>
+                </div>
+                <div id="logs" class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                    Logs
+                </div>
+                <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                    Objectifs
+                </div>
+            </div>
+            <div role="tabpanel" class="tab-pane" id="colors">
+                Couleurs
+            </div>
+        </div>
+    </div>
+
+    <canvas width="1600" height="1600"></canvas>
+
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="tracer.js"></script>
+    <script type="text/javascript">
+    $('#menu').tab();
+    </script>
+</body>
+</html>

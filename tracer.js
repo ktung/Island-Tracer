@@ -124,13 +124,13 @@ function dimension(direction, range) {
     var width = height = 1;
     switch(direction) {
         case 'N':
-            height += range-1;
+            height -= range;
             break;
         case 'W':
             width -= range;
             break;
         case 'S':
-            height -= range;
+            height += range-1;
             break;
         case 'E':
             width += range-1;
@@ -197,7 +197,8 @@ function drawNext() {
     if (el.part == "Explorer") {
         var tile = tileToDraw(el.data.action, el.data.parameters);
         draw(ctx, el.data.action, tile.x, tile.y, tile.width, tile.height);
-        $('#logs').html(actionInfos(el.data.action, el.data.parameters));
+        $('#logs ol').append('<li>'+ actionInfos(el.data.action, el.data.parameters) +'</li>');
+        document.getElementById('logs').scrollTop = document.getElementById('logs').scrollHeight;
     }
 }
 
@@ -266,10 +267,13 @@ $(document).ready(function() {
     onClickManual();
 
     $('#start').click(function(event) {
+        indice = 0;
+        var canvas = $('canvas')[0];
+        $('#logs ol').html("");
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
         currentX = $('#startingTileX')[0].value;
         currentY = $('#startingTileY')[0].value;
         draw(ctx, 'land', currentX, currentY);
-        var canvas = $('canvas')[0];
         var value = $('#weekSelector option:selected')[0].value;
         $.each(maps, function(index, el) {
             if (el.name == value) {
@@ -278,6 +282,12 @@ $(document).ready(function() {
             }
         });
         jsonData = $.parseJSON($('#json')[0].value);
-        animate();
+        if (document.getElementById('animation').checked) {
+            animate();
+        } else {
+            for (var i = jsonData.length - 1; i >= 0; i--) {
+                drawNext();
+            };
+        }
     });
 });

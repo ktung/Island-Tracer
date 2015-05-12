@@ -18,7 +18,8 @@
         <div class="tab-content">
             <div role="tabpanel" class="tab-pane active" id="dashboard">
                 <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-                    <textarea id="json"></textarea>
+                    <label for="json">JSON</label><textarea id="json"></textarea>
+                    <label for="animation">Animation</label> : <input id="animation" name="animation" type="checkbox" checked="checked" />
                     <button id="start">Start</button>
                     <div>
                         <select id="weekSelector" name="weekSelector">
@@ -27,17 +28,17 @@
                         <input id="startingTileY" name="startingTileY" type="number" placeholder="StartingTileY" />
                     </div>
                     <div>
-                        Vitesse : 
+                        <label for="speed">Vitesse</label>
                         <select name="speed" id="speed">
-                            <option value="1000">Lente</option>
-                            <option value="500" selected="selected">Moyenne</option>
+                            <option value="500">Lente</option>
+                            <option value="300" selected="selected">Moyenne</option>
                             <option value="100">Rapide</option>
                         </select>
-                        Manuel : <input id="manual" name="manual" type="checkbox" />
+                        <label for="manual">Manuel</label> : <input id="manual" name="manual" type="checkbox" />
                     </div>
                 </div>
                 <div id="logs" class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                    Logs
+                    <ol></ol>
                 </div>
                 <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
                     Objectifs

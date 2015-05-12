@@ -38,11 +38,11 @@ function displayMap() {
     if ($('#showMap')[0].checked) {
         $.each(maps, function(index, el) {
             if (el.name == $('#weekSelector option:selected')[0].value) {
-                canvas.style = "background: url('res/"+ el.map +"');";
+                canvas.style.background = "url('res/"+ el.map +"')";
             }
         });    
     } else {
-        canvas.style = "background: none;";
+        canvas.style.background = "none";
     }
 }
 

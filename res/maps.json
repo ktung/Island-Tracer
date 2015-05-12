@@ -4,5 +4,17 @@
         "map": "map19.svg",
         "startingTileX": 100,
         "startingTileY": 9
+    },
+    {
+        "name": "week18",
+        "map": "map18.svg",
+        "startingTileX": 13,
+        "startingTileY": 57
+    },
+    {
+        "name": "week17",
+        "map": "map17.svg",
+        "startingTileX": 59,
+        "startingTileY": 64
     }
 ]

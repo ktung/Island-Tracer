@@ -252,10 +252,9 @@ function initDashboard() {
         maps = json;
         $.each(maps, function(index, el) {
             options += "<option value='"+ el.name +"'>"+ el.name +"</option>";
-
-            $('#startingTileX').val(el.startingTileX);
-            $('#startingTileY').val(el.startingTileY);
         });
+        $('#startingTileX').val(maps[0].startingTileX);
+        $('#startingTileY').val(maps[0].startingTileY);
 
         $('#weekSelector').html(options);
     });

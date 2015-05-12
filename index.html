@@ -4,10 +4,14 @@
     <meta charset="utf-8" />
     <title>Island Tracer</title>
     <link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="bower_components/fontawesome/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="main.css">
 </head>
 <body>
-    <header class="page-header"><h1>Island Tracer</h1></header>
+    <header class="page-header">
+        <h1>Island Tracer - <a href="//github.com/Misuke/Island-Tracer"><i class="fa fa-github"></i> Github</a></h1>
+        <a href="https://github.com/mosser/ogl-2015/tree/master/output" target="_blank">Fichiers JSON OGL-2015</a>
+    </header>
 
     <div role="tabpanel">
         <ul class="nav nav-tabs" role="tablist" id="menu">
@@ -34,7 +38,8 @@
                             <option value="300" selected="selected">Moyenne</option>
                             <option value="100">Rapide</option>
                         </select>
-                        <label for="manual">Manuel</label> : <input id="manual" name="manual" type="checkbox" />
+                        <label data-toggle="tooltip" data-placement="bottom" title="Appuyer sur espace pour exécuter l'action suivante" for="manual">Manuel</label> : <input id="manual" name="manual" type="checkbox" />
+                        <label for="showMap">Afficher la carte</label> : <input id="showMap" name="showMap" type="checkbox" checked="checked" />
                     </div>
                 </div>
                 <div id="logs" class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
@@ -45,7 +50,6 @@
                 </div>
             </div>
             <div role="tabpanel" class="tab-pane" id="colors">
-                Couleurs
             </div>
         </div>
     </div>
@@ -57,6 +61,9 @@
     <script type="text/javascript" src="tracer.js"></script>
     <script type="text/javascript">
     $('#menu').tab();
+    $(function () {
+      $('[data-toggle="tooltip"]').tooltip();
+    });
     </script>
 </body>
 </html>

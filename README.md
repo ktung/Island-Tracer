@@ -9,8 +9,6 @@ Un outil retraçant les actions d'un bot de [Island](//github.com/ace-design/isl
 - **Nettoyer le code**
 - Personalisation couleur
 - Liste objectifs
-- Tooltip
-- Checkbox afficher la map
 
 ## Thanks
 [Sébastien Mosser](//github.com/mosser/)

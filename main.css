@@ -1,4 +1,4 @@
 header a { color: black;}
 canvas { border: 1px solid black; display: block; margin: 0 auto; }
 .tab-content { height: 150px }
-#logs { height: 150px; overflow-y: auto; }
+#logs, #objectives { display: inline-block; height: 150px; overflow-y: auto; }

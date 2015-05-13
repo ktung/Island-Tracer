@@ -14,3 +14,5 @@ Un outil retraçant les actions d'un bot de [Island](//github.com/ace-design/isl
 [Sébastien Mosser](//github.com/mosser/)
 
 Polytech Nice'Sophia
+
+[Simon Paris](//github.com/haagor/)

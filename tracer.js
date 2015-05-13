@@ -218,10 +218,35 @@ function actionInfos(action, parameters) {
     var msg = action;
     switch(action) {
         case 'land':
-        case 'explore':
-        case 'exploit':
                 break;
-
+        case 'explore':
+            $.each(jsonData[indice].data.extras.resources, function(index, el) {
+                msg += " -> "+el.resource;
+            });
+            break;
+        case 'exploit':
+            var resource = jsonData[indice-1].data.parameters.resource;
+            var amount   = jsonData[indice].data.extras.amount;
+            var obj = document.getElementById(resource+'objective');
+            if (obj != null) {
+                obj.innerHTML = parseInt(obj.innerHTML)+amount;
+            } else {
+                var row = "<tr><td>"+resource+"</td>"+"<td id='"+resource+"objective'>"+amount+"</td>"+"<td>*</td></tr>";
+                $('#objectives tbody').append(row);
+            }
+            msg += " -> "+resource;
+            msg += "("+amount+")";
+            break;
+        case 'transform':
+            var resource = jsonData[indice].data.extras.kind;
+            var amount   = jsonData[indice].data.extras.production;
+            var obj = document.getElementById(resource+'objective');
+            if (obj != null) {
+                obj.innerHTML = parseInt(obj.innerHTML)+amount;
+            }
+            msg += " -> "+resource;
+            msg += "("+amount+")";
+            break;
         case 'move_to':
         case 'scout':
             msg += " " + parameters.direction;
@@ -271,21 +296,36 @@ function initDashboard() {
     });
 }
 
+function initObjectives() {
+    var row = "";
+    $.each(jsonData[indice].data.objective, function(index, el) {
+        row += "<tr>";
+        row += "<td>"+el.resource+"</td>";
+        row += "<td id='"+el.resource+"objective'>0</td>";
+        row += "<td>"+el.amount+"</td>";
+        row += "</tr>";
+    });
+
+    $('#objectives').append(row);
+}
+
 $(document).ready(function() {
     initDashboard();
     initContext();
-    initPref();
+    initPref();    
     onClickManual();
 
     $('#start').click(function(event) {
         indice = 0;
         $('#logs ol').html("");
+        $('#objectives').html("");
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         currentX = $('#startingTileX')[0].value;
         currentY = $('#startingTileY')[0].value;
         draw(ctx, 'land', currentX, currentY);
         displayMap();
         jsonData = $.parseJSON($('#json')[0].value);
+        initObjectives();
         if (document.getElementById('animation').checked) {
             animate();
         } else {

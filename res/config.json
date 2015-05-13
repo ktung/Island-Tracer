@@ -22,5 +22,9 @@
     "glimpse": {
         "color": "#3676f7",
         "drawType": "stroke"
+    },
+    "transform": {
+        "color": "rgba(0, 0, 0, 0)",
+        "drawType": "stroke"
     }
 }

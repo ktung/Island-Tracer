@@ -26,5 +26,9 @@
     "transform": {
         "color": "rgba(0, 0, 0, 0)",
         "drawType": "stroke"
+    },
+    "stop": {
+        "color": "rgba(0, 0, 0, 0)",
+        "drawType": "fill"
     }
 }

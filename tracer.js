@@ -210,7 +210,35 @@ function drawNext() {
         var tile = tileToDraw(el.data.action, el.data.parameters);
         draw(ctx, el.data.action, tile.x, tile.y, tile.width, tile.height);
         $('#logs ol').append('<li>'+ actionInfos(el.data.action, el.data.parameters) +'</li>');
+        updateAction(el.data.action);
         document.getElementById('logs').scrollTop = document.getElementById('logs').scrollHeight;
+    }
+}
+
+function initActions() {
+    for (var action in pref) {
+        pref[action].nbCall = 0;
+        pref[action].totalCost = 0;
+    }
+}
+
+function updateAction(action) {
+    ++pref[action].nbCall;
+
+    if (typeof(pref[action].totalCost) == 0) {
+        pref[action].totalCost = jsonData[indice].data.cost;
+    } else {
+        pref[action].totalCost += jsonData[indice].data.cost;
+    }
+
+    var actionRow = document.getElementById(action+'Infos');
+    var average = Math.round(pref[action].totalCost/pref[action].nbCall*100)/100;
+    if (actionRow == null) {
+        var row = '<tr id="'+action+'Infos""><td>'+action+'</td><td>'+pref[action].nbCall+'</td><td>'+pref[action].totalCost+'</td><td>'+average+'</td></tr>';
+        $('#actions').append(row);
+    } else {
+        var row = '<td>'+action+'</td><td>'+pref[action].nbCall+'</td><td>'+pref[action].totalCost+'</td><td>'+average+'</td>';
+        actionRow.innerHTML = row;
     }
 }
 
@@ -218,7 +246,7 @@ function actionInfos(action, parameters) {
     var msg = action;
     switch(action) {
         case 'land':
-                break;
+            break;
         case 'explore':
             $.each(jsonData[indice].data.extras.resources, function(index, el) {
                 msg += " -> "+el.resource;
@@ -312,13 +340,15 @@ function initObjectives() {
 $(document).ready(function() {
     initDashboard();
     initContext();
-    initPref();    
+    initPref();
     onClickManual();
 
     $('#start').click(function(event) {
+        initActions();
         indice = 0;
         $('#logs ol').html("");
         $('#objectives').html("");
+        $('#actions tbody').html("");
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         currentX = $('#startingTileX')[0].value;
         currentY = $('#startingTileY')[0].value;

@@ -4,10 +4,14 @@
     <meta charset="utf-8" />
     <title>Island Tracer</title>
     <link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="main.css">
 </head>
 <body>
-    <header class="page-header"><h1>Island Tracer</h1></header>
+    <header class="page-header">
+        <h1>Island Tracer - <a href="//github.com/Misuke/Island-Tracer"><i class="fa fa-github"></i> Github</a></h1>
+        <a href="https://github.com/mosser/ogl-2015/tree/master/output" target="_blank">Fichiers JSON OGL-2015</a>
+    </header>
 
     <div role="tabpanel">
         <ul class="nav nav-tabs" role="tablist" id="menu">
@@ -18,8 +22,9 @@
         <div class="tab-content">
             <div role="tabpanel" class="tab-pane active" id="dashboard">
                 <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-                    <textarea id="json"></textarea>
-                    <button id="start">Start</button>
+                    <textarea id="json" placeholder="JSON"></textarea>
+                    <label for="animation">Animation</label> : <input id="animation" name="animation" type="checkbox" checked="checked" />
+                    <button id="start" class="btn btn-success">Start</button>
                     <div>
                         <select id="weekSelector" name="weekSelector">
                         </select>
@@ -27,24 +32,37 @@
                         <input id="startingTileY" name="startingTileY" type="number" placeholder="StartingTileY" />
                     </div>
                     <div>
-                        Vitesse : 
+                        <label for="speed">Vitesse</label>
                         <select name="speed" id="speed">
-                            <option value="1000">Lente</option>
-                            <option value="500" selected="selected">Moyenne</option>
+                            <option value="500">Lente</option>
+                            <option value="300" selected="selected">Moyenne</option>
                             <option value="100">Rapide</option>
                         </select>
-                        Manuel : <input id="manual" name="manual" type="checkbox" />
+                        <label data-toggle="tooltip" data-placement="bottom" title="Appuyer sur espace pour exécuter l'action suivante" for="manual">Manuel</label> : <input id="manual" name="manual" type="checkbox" />
+                        <label for="showMap">Afficher la carte</label> : <input id="showMap" name="showMap" type="checkbox" checked="checked" />
                     </div>
                 </div>
-                <div id="logs" class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                    Logs
+                <div id="logs" class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                    <ol></ol>
+                </div>
+                <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                    <table id="actions" class="table table-hover">
+                        <thead>
+                        <tr>
+                            <td>Action</td>
+                            <td>Nb appels</td>
+                            <td>Total cost</td>
+                            <td>Moyenne</td>
+                        </tr>
+                        </thead>
+                    </table>
                 </div>
                 <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-                    Objectifs
+                    <table id="objectives" class="table table-hover">
+                    </table>
                 </div>
             </div>
             <div role="tabpanel" class="tab-pane" id="colors">
-                Couleurs
             </div>
         </div>
     </div>
@@ -56,6 +74,9 @@
     <script type="text/javascript" src="tracer.js"></script>
     <script type="text/javascript">
     $('#menu').tab();
+    $(function () {
+      $('[data-toggle="tooltip"]').tooltip();
+    });
     </script>
 </body>
 </html>

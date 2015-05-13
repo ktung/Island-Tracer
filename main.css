@@ -1,1 +1,4 @@
+header a { color: black;}
 canvas { border: 1px solid black; display: block; margin: 0 auto; }
+.tab-content { height: 150px }
+#logs, #objectives, #actions { display: inline-block; height: 150px; overflow-y: auto; }

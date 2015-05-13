@@ -7,9 +7,10 @@ Un outil retraçant les actions d'un bot de [Island](//github.com/ace-design/isl
 
 ## Todo
 - **Nettoyer le code**
-- Liste objectifs
 
 ## Thanks
 [Sébastien Mosser](//github.com/mosser/)
 
 Polytech Nice'Sophia
+
+[Simon Paris](//github.com/haagor/)

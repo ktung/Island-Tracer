@@ -1,5 +1,11 @@
 [
     {
+        "name": "week20",
+        "map": "map20.svg",
+        "startingTileX": 145,
+        "startingTileY": 44
+    },
+    {
         "name": "week19",
         "map": "map19.svg",
         "startingTileX": 100,
